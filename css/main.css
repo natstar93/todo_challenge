@@ -1,0 +1,11 @@
+.task-form {
+  padding-top: 20px;
+}
+
+.add-task-btn {
+  margin: 0 0 10px 10px;
+}
+
+#editing {
+  margin: 5px;
+}

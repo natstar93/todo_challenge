@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Todo List of Joy</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -12,21 +13,33 @@
   </head>
 
   <body ng-controller="TodoController as todoCtrl">
-    <div class="col-md-6">
-      <form class="form-horizontal" name="addForm">
-        <input type="text" name="taskDescription" ng-model="todoCtrl.taskDescription" ng-minlength="2" required>
+    <div class="col-md-6 col-md-offset-3">
+      <h1>To Do List of Joy</h1>
+      <form class="form-horizontal task-form" name="addForm">
+        <input type="text" class="col-md-6" name="taskDescription" ng-model="todoCtrl.taskDescription" ng-minlength="2" required>
         <button class="btn add-task-btn" ng-click="todoCtrl.addTask()">Add task</button>
-          <span style="color:red" ng-show="addForm.taskDescription.$dirty && addForm.taskDescription.$invalid" class="error-msg">
+        <span style="color:red" ng-show="addForm.taskDescription.$dirty && addForm.taskDescription.$invalid" class="error-msg">
           <p class="required-error" ng-show="addForm.taskDescription.$error.required">Description is required.</p>
           <p class="length-error" ng-show="addForm.taskDescription.$error.minlength">Description must be 2 or more characters long.</p>
         </span>
       </form>
-      <ul class="list-group" ng-repeat="task in todoCtrl.taskList.items">
-        <li class="list-group-item">
-          {{ task.description }}
-        </div>
-        </li>
-      </ul>
+      <table class="list-group col-md-12" ng-repeat="task in todoCtrl.taskList.items">
+        <tr class="list-group-item">
+          <td class="col-md-1">
+            <input type="checkbox">
+          </td>
+          <td class="col-md-9">
+            <span class="col-md-12" ng-hide="editorEnabled">{{ task.description }}</span>
+            <input class="col-md-12 edit-box" ng-show="editorEnabled" ng-model="task.description">
+          </td>
+          <td class="col-md-2">
+            <button type="button" id="editing" ng-disabled="editorEnabled" ng-click="editorEnabled=!editorEnabled" class="btn btn-primary edit-task-btn">
+              <span class="glyphicon glyphicon-pencil"></span> Edit details
+            </button>
+            <button type="button" id="editing" ng-show="editorEnabled" ng-click="editorEnabled=!editorEnabled" class="btn btn-success done-editing-btn">Done</button>
+          </td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>

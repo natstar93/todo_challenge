@@ -5,6 +5,7 @@ describe('To do list', function() {
   var editTaskButton = element(by.className('edit-task-btn'));
   var doneEditingButton = element(by.className('done-editing-btn'));
   var errorBox = element(by.className('error-msg'));
+  var editBox = element(by.className('edit-box'))
 
   beforeEach(function() {
     browser.get('http://localhost:8080');
@@ -38,7 +39,8 @@ describe('To do list', function() {
 
   it('can edit task', function() {
     editTaskButton.click();
-    editBox.sendKeys('edited')
+    editBox.clear();
+    editBox.sendKeys('edited');
     doneEditingButton.click();
     expect(element.all(by.binding('task.description')).getText()).toContain('edited');
   });

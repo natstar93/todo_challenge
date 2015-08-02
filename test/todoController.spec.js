@@ -30,7 +30,7 @@ describe('TodoController', function() {
   })
 
   it('can add a new task', function() {
-    ctrl.taskDescription = 'New task';
+    ctrl.taskDescription = 'New task';  
     ctrl.addTask();
     expect(ctrl.taskList.items[2].description).toContain('New task'); 
   })
