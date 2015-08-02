@@ -23,18 +23,21 @@
           <p class="length-error" ng-show="addForm.taskDescription.$error.minlength">Description must be 2 or more characters long.</p>
         </span>
       </form>
-      <table class="list-group col-md-12" ng-repeat="task in todoCtrl.taskList.items">
+      <button ng-click="filters.completed = false" class="active-btn">Show active</button>
+      <button ng-click="filters.completed = true" class="completed-btn">Show completed</button>
+      <button ng-click="filters.completed = ''">Show all</button>
+      <table class="list-group col-md-12" ng-repeat="task in todoCtrl.taskList.items | filter:filters">
         <tr class="list-group-item">
           <td class="col-md-1">
-            <input type="checkbox">
+            <input type="checkbox" ng-click="task.completed=!task.completed" ng-checked="task.completed" class="completed-tick">
           </td>
-          <td class="col-md-9">
+          <td class="col-md-7">
             <span class="col-md-12" ng-hide="editorEnabled">{{ task.description }}</span>
             <input class="col-md-12 edit-box" ng-show="editorEnabled" ng-model="task.description">
           </td>
-          <td class="col-md-2">
+          <td class="col-md-4">
             <button type="button" id="editing" ng-disabled="editorEnabled" ng-click="editorEnabled=!editorEnabled" class="btn btn-primary edit-task-btn">
-              <span class="glyphicon glyphicon-pencil"></span> Edit details
+              <span class="glyphicon glyphicon-pencil"></span> Edit
             </button>
             <button type="button" id="editing" ng-show="editorEnabled" ng-click="editorEnabled=!editorEnabled" class="btn btn-success done-editing-btn">Done</button>
           </td>

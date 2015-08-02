@@ -12,26 +12,13 @@ describe('TodoController', function() {
     expect(ctrl.taskDescription).toBeUndefined();
   })
 
-  xit('initialises with no current tasks', function() {
-    expect(ctrl.taskList).toBeUndefined();
-  })
-
-  var items = [
-      {
-        "description": "Buy Vietnamese food"
-      },
-      {
-        "description": "Finish homework"
-      }
-    ]
-
-  it('displays tasks', function() {
-    expect(ctrl.taskList.items).toEqual(items); 
+  it('initialises with no current tasks', function() {
+    expect(ctrl.taskList.items.length).toBe(0);
   })
 
   it('can add a new task', function() {
     ctrl.taskDescription = 'New task';  
     ctrl.addTask();
-    expect(ctrl.taskList.items[2].description).toContain('New task'); 
+    expect(ctrl.taskList.items[0].description).toContain('New task'); 
   })
 })
