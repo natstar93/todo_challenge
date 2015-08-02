@@ -12,4 +12,9 @@ todo.controller('TodoController', [function() {
       }
     ]
   }
+
+  self.addTask = function() {
+    self.taskList.items.push( { "description" : self.taskDescription } );
+  };
+
 }]);

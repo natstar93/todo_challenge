@@ -12,6 +12,10 @@ describe('TodoController', function() {
     expect(ctrl.taskDescription).toBeUndefined();
   })
 
+  xit('initialises with no current tasks', function() {
+    expect(ctrl.taskList).toBeUndefined();
+  })
+
   var items = [
       {
         "description": "Buy Vietnamese food"
@@ -23,5 +27,11 @@ describe('TodoController', function() {
 
   it('displays tasks', function() {
     expect(ctrl.taskList.items).toEqual(items); 
+  })
+
+  it('can add a new task', function() {
+    ctrl.taskDescription = 'New task';
+    ctrl.addTask();
+    expect(ctrl.taskList.items[2].description).toContain('New task'); 
   })
 })
