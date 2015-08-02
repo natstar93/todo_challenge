@@ -13,13 +13,18 @@
 
   <body ng-controller="TodoController as todoCtrl">
     <div class="col-md-6">
-      <form class="form-horizontal">
-        <input type="text" ng-model="todoCtrl.taskDescription">
-        <button class="btn" ng-click="todoCtrl.addTask()">Add task</button>
+      <form class="form-horizontal" name="addForm">
+        <input type="text" name="taskDescription" ng-model="todoCtrl.taskDescription" ng-minlength="2" required>
+        <button class="btn add-task-btn" ng-click="todoCtrl.addTask()">Add task</button>
+          <span style="color:red" ng-show="addForm.taskDescription.$dirty && addForm.taskDescription.$invalid" class="error-msg">
+          <p class="required-error" ng-show="addForm.taskDescription.$error.required">Description is required.</p>
+          <p class="length-error" ng-show="addForm.taskDescription.$error.minlength">Description must be 2 or more characters long.</p>
+        </span>
       </form>
       <ul class="list-group" ng-repeat="task in todoCtrl.taskList.items">
         <li class="list-group-item">
           {{ task.description }}
+        </div>
         </li>
       </ul>
     </div>
