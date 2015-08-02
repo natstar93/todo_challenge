@@ -4,4 +4,5 @@ describe('Github Profile finder', function() {
 
     expect(browser.getTitle()).toEqual('Todo List of Joy');
   });
+
 });

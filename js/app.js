@@ -1,1 +1,1 @@
-var todo = angular.module('Todo', ['ngResource'])
+var todo = angular.module('Todo', ['ngResource']);

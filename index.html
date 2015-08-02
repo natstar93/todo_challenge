@@ -14,15 +14,12 @@
   <body ng-controller="TodoController as todoCtrl">
     <div class="col-md-6">
       <form class="form-horizontal">
-        <input type="text">
+        <input type="text" ng-model="todoCtrl.taskDescription">
         <button class="btn">Add task</button>
       </form>
-      <ul class="list-group">
+      <ul class="list-group" ng-repeat="task in todoCtrl.taskList.items">
         <li class="list-group-item">
-          Buy Vietnamese food
-        </li>
-        <li class="list-group-item">
-          Write tests
+          {{ task.description }}
         </li>
       </ul>
     </div>
