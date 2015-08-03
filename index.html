@@ -17,17 +17,19 @@
       <h1>To Do List of Joy</h1>
       <form class="form-horizontal task-form" name='addForm' ng-submit='todoCtrl.addTask()' novalidate>
         <input type="text" class="col-md-6" name="taskDescription" ng-model="todoCtrl.taskDescription" ng-minlength="2" required>
-        <button class="btn add-task-btn" ng-click="addForm.taskDescription.$setPristine()">Add task</button>
+        <button class="btn btn-success add-task-btn" ng-click="addForm.taskDescription.$setPristine()">Add task</button>
         <span style="color:red" ng-show="addForm.taskDescription.$dirty && addForm.taskDescription.$invalid" class="error-msg">
           <p class="required-error" ng-show="addForm.taskDescription.$error.required">Description is required.</p>
           <p class="length-error" ng-show="addForm.taskDescription.$error.minlength">Description must be 2 or more characters long.</p>
         </span>
       </form>
       <p class="total-tasks">Total tasks: {{ todoCtrl.taskList.items.length }}</p>
-      <button ng-click="filters.completed = false" class="active-btn">Show active</button>
-      <button ng-click="filters.completed = true" class="completed-btn">Show completed</button>
-      <button ng-click="filters.completed = ''">Show all</button>
-       <button ng-click="todoCtrl.deleteCompleted()" class="delete-completed-btn">Delete completed</button>
+      <nav class="navbar">
+        <button ng-click="filters.completed = false" class="btn active-btn btn-default">Show active</button>
+        <button ng-click="filters.completed = true" class="btn completed-btn btn-default">Show completed</button>
+        <button ng-click="filters.completed = ''" class="btn btn-default">Show all</button>
+        <button ng-click="todoCtrl.deleteCompleted()" class="btn btn-default delete-completed-btn">Delete completed</button>
+      </nav>
       <table class="list-group col-md-12" ng-repeat="task in todoCtrl.taskList.items | filter:filters">
         <tr class="list-group-item">
           <td class="col-md-1">
