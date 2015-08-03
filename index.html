@@ -15,7 +15,7 @@
   <body ng-controller="TodoController as todoCtrl">
     <div class="col-md-6 col-md-offset-3">
       <h1>To Do List of Joy</h1>
-      <form class="form-horizontal task-form" name="addForm">
+      <form class="form-horizontal task-form" name='addForm' novalidate>
         <input type="text" class="col-md-6" name="taskDescription" ng-model="todoCtrl.taskDescription" ng-minlength="2" required>
         <button class="btn add-task-btn" ng-click="todoCtrl.addTask()">Add task</button>
         <span style="color:red" ng-show="addForm.taskDescription.$dirty && addForm.taskDescription.$invalid" class="error-msg">
@@ -26,6 +26,7 @@
       <button ng-click="filters.completed = false" class="active-btn">Show active</button>
       <button ng-click="filters.completed = true" class="completed-btn">Show completed</button>
       <button ng-click="filters.completed = ''">Show all</button>
+       <button ng-click="todoCtrl.deleteCompleted()" class="delete-completed-btn">Delete completed</button>
       <table class="list-group col-md-12" ng-repeat="task in todoCtrl.taskList.items | filter:filters">
         <tr class="list-group-item">
           <td class="col-md-1">

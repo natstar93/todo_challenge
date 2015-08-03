@@ -9,6 +9,7 @@ describe('To do list', function() {
   var completedTick = element(by.className('completed-tick'));
   var activeBtn = element(by.className('active-btn'));
   var completedBtn = element(by.className('completed-btn'));
+  var deleteCompletedBtn = element(by.className('delete-completed-btn'));
 
   beforeEach(function() {
     browser.get('http://localhost:8080');
@@ -65,5 +66,12 @@ describe('To do list', function() {
     createTask();
     activeBtn.click();
     expect(element.all(by.binding('task.description')).getText()).toContain('Buy Vietnamese food');
+  });
+
+  it('can delete completed tasks', function() {
+    createTask();
+    completedTick.click();
+    deleteCompletedBtn.click();
+    expect(element.all(by.binding('task.description')).getText()).toNotContain('Buy Vietnamese food');
   });
 });

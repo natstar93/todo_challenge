@@ -13,4 +13,11 @@ todo.controller('TodoController', [function() {
     }
   };
 
+  self.deleteCompleted = function() {
+    for (var i = 0; i < self.taskList.items.length; i++) {
+      if (self.taskList.items[i].completed) {
+        self.taskList.items.splice(i, 1);
+      }
+    }
+  };
 }]);
