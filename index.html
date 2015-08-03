@@ -15,9 +15,9 @@
   <body ng-controller="TodoController as todoCtrl">
     <div class="col-md-6 col-md-offset-3">
       <h1>To Do List of Joy</h1>
-      <form class="form-horizontal task-form" name='addForm' novalidate>
+      <form class="form-horizontal task-form" name='addForm' ng-submit='todoCtrl.addTask()' novalidate>
         <input type="text" class="col-md-6" name="taskDescription" ng-model="todoCtrl.taskDescription" ng-minlength="2" required>
-        <button class="btn add-task-btn" ng-click="todoCtrl.addTask()">Add task</button>
+        <button class="btn add-task-btn" ng-click="addForm.taskDescription.$setPristine()">Add task</button>
         <span style="color:red" ng-show="addForm.taskDescription.$dirty && addForm.taskDescription.$invalid" class="error-msg">
           <p class="required-error" ng-show="addForm.taskDescription.$error.required">Description is required.</p>
           <p class="length-error" ng-show="addForm.taskDescription.$error.minlength">Description must be 2 or more characters long.</p>

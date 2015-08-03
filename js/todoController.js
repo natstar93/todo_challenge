@@ -11,6 +11,7 @@ todo.controller('TodoController', [function() {
     if (self.taskDescription) {
       self.taskList.items.push( { "description" : self.taskDescription, "completed": false } );
     }
+    self.taskDescription = '';
   };
 
   self.deleteCompleted = function() {

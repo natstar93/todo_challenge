@@ -33,16 +33,16 @@ describe('To do list', function() {
 
     it('does not add task if description too short', function() {
       descriptionBox.sendKeys('W');
+      expect(errorBox.element(by.className('length-error')).getText()).toEqual('Description must be 2 or more characters long.')
       addTaskButton.click();
       expect(browser.isElementPresent(by.binding('task.description'))).toBe(false);
-      expect(errorBox.element(by.className('length-error')).getText()).toEqual('Description must be 2 or more characters long.')
     });    
 
     it('does not add task if description missing', function() {
       descriptionBox.sendKeys(' ');
+      expect(errorBox.element(by.className('required-error')).getText()).toEqual('Description is required.')
       addTaskButton.click();
       expect(browser.isElementPresent(by.binding('task.description'))).toBe(false);
-      expect(errorBox.element(by.className('required-error')).getText()).toEqual('Description is required.')
     });  
   });
 
