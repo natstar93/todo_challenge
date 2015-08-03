@@ -23,6 +23,7 @@
           <p class="length-error" ng-show="addForm.taskDescription.$error.minlength">Description must be 2 or more characters long.</p>
         </span>
       </form>
+      <p class="total-tasks">Total tasks: {{ todoCtrl.taskList.items.length }}</p>
       <button ng-click="filters.completed = false" class="active-btn">Show active</button>
       <button ng-click="filters.completed = true" class="completed-btn">Show completed</button>
       <button ng-click="filters.completed = ''">Show all</button>

@@ -74,4 +74,10 @@ describe('To do list', function() {
     deleteCompletedBtn.click();
     expect(element.all(by.binding('task.description')).getText()).toNotContain('Buy Vietnamese food');
   });
+
+  it('shows total number of tasks', function() {
+    expect(element(by.className('total-tasks')).getText()).toContain('Total tasks: 0');
+    createTask();
+    expect(element(by.className('total-tasks')).getText()).toContain('Total tasks: 1');
+  })
 });
