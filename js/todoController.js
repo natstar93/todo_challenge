@@ -15,7 +15,7 @@ todo.controller('TodoController', [function() {
   };
 
   self.deleteCompleted = function() {
-    for (var i = 0; i < self.taskList.items.length; i++) {
+    for (var i = self.taskList.items.length - 1; i > -1; i--) {
       if (self.taskList.items[i].completed) {
         self.taskList.items.splice(i, 1);
       }
